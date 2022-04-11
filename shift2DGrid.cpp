@@ -6,9 +6,9 @@ using namespace std;
 class Solution {
 public:
     vector<vector<int>> shiftGrid(vector<vector<int>>& grid, int k) {
-        vector<vector<int>> ans(grid.size(), vector<int>(grid[0].size()));
         int m = grid[0].size();
         int n = grid.size();
+        vector<vector<int>> ans(n, vector<int>(m));
         
         for(int i=0;i<n;i++)
         {
