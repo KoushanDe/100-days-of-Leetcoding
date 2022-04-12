@@ -24,7 +24,7 @@ public:
                     }
                 }
                 
-                if(count<2)
+                if(count<2||count>3)
                 {
                     if(board[i][j]==1)
                         board[i][j]=-1;
@@ -33,11 +33,6 @@ public:
                 {
                     if(board[i][j]==0)
                         board[i][j]=2;
-                }
-                else if(count>3)
-                {
-                    if(board[i][j]==1)
-                        board[i][j]=-1;
                 }
             }
         }
