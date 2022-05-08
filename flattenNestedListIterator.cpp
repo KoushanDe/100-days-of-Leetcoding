@@ -1,6 +1,5 @@
 #include<bits/stdc++.h>
 using namespace std;
-
  // This is the interface that allows for creating nested lists.
  // You should not implement it, or speculate about its implementation
  class NestedInteger {
