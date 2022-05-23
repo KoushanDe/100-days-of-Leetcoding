@@ -4,22 +4,25 @@ using namespace std;
 class Solution {
 public:
     void sortColors(vector<int>& nums) {
-        int freq[3] = {0};
+        int low,mid,high;
         
-        for(int i : nums)
-            freq[i]++;
-        int j=0;
-        for(int i=0;i<nums.size();i++)
-        {   
-            if(freq[j]>0)
+        low=0;
+        mid=0;
+        high=nums.size()-1;
+        
+        while(mid<=high)
+        {
+            if(nums[mid]==0)
             {
-                nums[i] = j;
-                freq[j]--;
+                swap(nums[low],nums[mid]);
+                mid++,low++;
             }
+            else if(nums[mid]==1)
+                mid++;
             else
             {
-                j++;
-                i--;
+                swap(nums[mid],nums[high]);
+                high--;
             }
         }
     }
