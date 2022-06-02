@@ -1,5 +1,5 @@
-#include <bits/stdc++.h>
-
+#include<bits/stdc++.h>
+using namespace std;
 long long merge(long long* arr, long long* temp, int left, int mid, int right)
 {
     int i,j,k;
