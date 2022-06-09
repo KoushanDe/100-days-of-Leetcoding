@@ -24,7 +24,7 @@ int getMaxPathSum(vector<vector<int>> &matrix)
 */
 /**TABULATION**/
 #include<bits/stdc++.h>
-
+using namespace std;
 int getMaxPathSum(vector<vector<int>> &matrix)
 {    
     int maxm = INT_MIN;
