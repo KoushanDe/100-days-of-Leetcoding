@@ -1,12 +1,13 @@
 #include<bits/stdc++.h>
 using namespace std;
 string shortestSupersequence(string a, string b)
-{
+{   
 	int n = a.size();
     int m = b.size();
     
     vector<vector<int>> dp (n+1,vector<int>(m+1,0));
     
+    //lcs code
     for(int i=0;i<=n;i++) dp[i][0]=0;
     for(int j=0;j<=m;j++) dp[0][j]=0;
     
@@ -18,6 +19,7 @@ string shortestSupersequence(string a, string b)
             else    dp[i][j] = max(dp[i-1][j],dp[i][j-1]);
         }
     }
+    //till this
     
     string ans;
     int i=n,j=m;
