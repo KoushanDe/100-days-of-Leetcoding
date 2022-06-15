@@ -9,7 +9,7 @@ public:
         return s1.size()>s2.size();
     }
     int longestStrChain(vector<string>& words) {
-        map<string,int> chainlen;
+        unordered_map<string,int> chainlen;
         int maxlen = 1;
         for(string word:words)
             chainlen[word] = 1;
