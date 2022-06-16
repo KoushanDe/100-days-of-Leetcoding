@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 //MY CODE
+//This approach is better in my opinion
 class Solution {
 public:
     static bool compareSize(string& s1, string& s2)
