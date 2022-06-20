@@ -9,14 +9,16 @@ public:
         for(int i=0;i<nums.size();i++)
         {
             if(nums[i]==1)
+            {
                 count++;
+                maxm=max(count,maxm);
+            }
             else
             {
-                maxm=max(count,maxm);
                 count=0;
             }
         }
-        maxm = max(maxm,count);
+
         return maxm;
     }
 };

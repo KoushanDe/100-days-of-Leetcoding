@@ -13,7 +13,7 @@ public:
         {
             if(height[l]<=height[r])
             {
-                if(height[l]>leftmax)leftmax=height[l];
+                if(height[l]>=leftmax)leftmax=height[l];
                 else
                 {
                     water += (leftmax-height[l]);
@@ -22,7 +22,7 @@ public:
             }
             else
             {
-                if(height[r]>rightmax)rightmax=height[r];
+                if(height[r]>=rightmax)rightmax=height[r];
                 else
                 {
                     water += (rightmax-height[r]);
