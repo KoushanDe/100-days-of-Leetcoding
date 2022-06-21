@@ -29,7 +29,6 @@ class Solution
     static bool compareJobs(Job& j1, Job& j2)
     {
         if(j1.profit>j2.profit) return true;
-        else if(j1.profit==j2.profit) return j1.dead>j2.dead;
         else return false;
     }
     //Function to find the maximum profit and the number of jobs done.
