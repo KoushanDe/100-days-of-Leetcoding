@@ -12,6 +12,7 @@ bool isPalindrome(string s)
     }
     return true;
 }
+//palindrome partitioning 1 is same 2 same..but there we need to print all the possible partitions, so no dp..warna same hi hay bro
 /**MEMOISATION**
 int f(string& s, int index,vector<int>& dp)
 {    

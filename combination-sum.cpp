@@ -30,7 +30,7 @@ public:
         vector<vector<int>> ans;
         vector<int> list;
         int sum = 0;
-        sort(candidates.begin(),candidates.end());
+        //sort(candidates.begin(),candidates.end()); unnecessary
         recSum(candidates,ans,list,target,0,sum);
         
         return ans;
