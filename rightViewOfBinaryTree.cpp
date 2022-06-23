@@ -8,6 +8,26 @@ using namespace std;
      TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
      TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  };
+ /**RECURSIVE SOLUTION**
+  * class Solution {
+public:
+    void rsv(TreeNode* root, int level, vector<int>& ans)
+    {
+        if(root==NULL) return;
+        
+        if(level==ans.size()) ans.push_back(root->val);
+        
+        rsv(root->right,level+1,ans);
+        rsv(root->left,level+1,ans);
+    }
+    vector<int> rightSideView(TreeNode* root) {
+        vector<int> ans;
+        
+        rsv(root,0,ans);
+        
+        return ans;
+    }
+};**/
  
 class Solution {
 public:
