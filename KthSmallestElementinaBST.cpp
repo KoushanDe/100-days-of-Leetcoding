@@ -38,6 +38,7 @@ public:
     }
 };
 
+//by reference
 class Solution {
 public:
     void findKthNode(TreeNode* root,int k, int& node,int& count)
@@ -58,5 +59,40 @@ public:
         int count=0;
         findKthNode(root,k,node,count);
         return node;
+    }
+};
+
+//iterative
+class Solution {
+public:
+    int kthSmallest(TreeNode* root, int k) {
+        stack<TreeNode*> st;
+        
+        st.push(root);
+        
+        int count=0;
+        
+        while(!st.empty())
+        {
+            if(root->left)
+            {
+                st.push(root->left);
+                root=root->left;
+            }
+            else{
+                TreeNode* curr = st.top();
+                st.pop();
+                //cout<<curr->val<<" ";
+                count++;
+                if(count==k) return curr->val;
+                if(curr->right) 
+                {
+                    st.push(curr->right);
+                    root=curr->right;
+                }
+            }
+        }
+        
+        return 0;
     }
 };
