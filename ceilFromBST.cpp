@@ -38,7 +38,7 @@ void helper(BinaryTreeNode<int>* node, int x, int& minceil)
         helper(node->right,x,minceil);
     else
     {
-        minceil = min(minceil,node->data);
+        minceil = node->data;
         helper(node->left,x,minceil);
     }
 }
