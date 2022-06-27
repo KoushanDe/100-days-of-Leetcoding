@@ -37,3 +37,26 @@ public:
         return ans->val;
     }
 };
+
+class Solution {
+public:
+    void findKthNode(TreeNode* root,int k, int& node,int& count)
+    {
+        if(root==NULL) return;
+        if(count==k) return;
+        
+        findKthNode(root->left,k,node,count);
+        
+        count++;
+        //cout<<root->val<<" "<<count<<endl;
+        if(count==k) node=root->val;
+        
+        findKthNode(root->right,k,node,count);
+    }
+    int kthSmallest(TreeNode* root, int k) {
+        int node;
+        int count=0;
+        findKthNode(root,k,node,count);
+        return node;
+    }
+};
