@@ -11,46 +11,41 @@ struct TreeNode {
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
+
 class Solution {
 public:
-    TreeNode* first;
-    TreeNode* mid;
-    TreeNode* last;
-    TreeNode* prev;
+    TreeNode* prev=NULL;
+    TreeNode* first=NULL;
+    TreeNode* mid=NULL;
+    TreeNode* last=NULL;
     
-    void recovery(TreeNode* root)
+    void inorder(TreeNode* root)
     {
-        if(root==NULL)
-            return;
-        recovery(root->left);
-        if(prev!=NULL)
-        {
-            if(root->val<prev->val && first == NULL)
+        if(root==NULL) return;
+        
+        inorder(root->left);
+        
+        if(prev!=NULL&&prev->val>root->val)
+        {   
+            if(first==NULL)
             {
-                first = prev;
-                mid = root;
+                first=prev;
+                mid=root;
             }
-            else if(root->val<prev->val)
-            {
-                last = root;
-            }
-            
+            else
+                last=root;
         }
-        prev = root;
-        recovery(root->right);
+        prev=root;
+        
+        inorder(root->right);
     }
     
-    
     void recoverTree(TreeNode* root) {
+        inorder(root);
         
-        recovery(root);
-        if(last==NULL)
-        {
-            swap(first->val,mid->val);
-        }
-        else
-        {
+        if(last)
             swap(first->val,last->val);
-        }
-    } 
+        else
+            swap(first->val,mid->val);
+    }
 };
