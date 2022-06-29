@@ -37,10 +37,10 @@ class Solution{
             if(isPossible(cells,vis,i+di[k],j+dj[k]))
             {
                 path.push_back(dir[k]);
-                vis[i+di[k]][j+dj[k]]=1;
+                vis[i][j]=1;
                 f(i+di[k],j+dj[k],cells,n,path,ans,vis);
                 path.pop_back();
-                vis[i+di[k]][j+dj[k]]=0;
+                vis[i][j]=0;
             }
         }
     }
@@ -50,7 +50,6 @@ class Solution{
         string path;
         vector<vector<int>> vis(n,vector<int>(n,0));
         if(m[0][0]==0)return ans;
-        vis[0][0]=1;
         
         f(0,0,m,n,path,ans,vis);
         
