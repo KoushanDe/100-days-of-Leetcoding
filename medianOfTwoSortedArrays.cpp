@@ -18,7 +18,7 @@ public:
         //notnecessary as n1<n2 always
         
         int partLen= (n1+n2+1)/2; //works for even as well as odd length
-        cout<<partLen<<endl;
+        //cout<<partLen<<endl;
         
         int low = 0;
         int high = n1;
