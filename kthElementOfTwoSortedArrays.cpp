@@ -16,7 +16,7 @@ class Solution{
         
         int partLen= k;
         
-        int low = 0;
+        int low = max(0,k-n);
         int high = min(m,k);
         
         while(low<=high)
@@ -26,8 +26,6 @@ class Solution{
             
             int l1 = cut1>0?row1[cut1-1]:INT_MIN;
             int l2 = cut2>0?row2[cut2-1]:INT_MIN;
-            if(cut1>m) l1=INT_MAX;
-            if(cut2>n) l2=INT_MAX;
             int r1 = cut1<m?row1[cut1]:INT_MAX;
             int r2 = cut2<n?row2[cut2]:INT_MAX;
             
