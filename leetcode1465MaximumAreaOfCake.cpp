@@ -3,13 +3,14 @@ int mod = (int)(1e9+7);
 class Solution {
 public:
     int maxArea(int h, int w, vector<int>& horizontalCuts, vector<int>& verticalCuts) {
-        int maxVertical=INT_MIN,maxHorizontal=INT_MIN;
         sort(horizontalCuts.begin(),horizontalCuts.end());
         sort(verticalCuts.begin(),verticalCuts.end());
         
-        horizontalCuts.insert(horizontalCuts.begin(),0);
+        int maxVertical=verticalCuts[0],maxHorizontal=horizontalCuts[0];
+        
+        
         horizontalCuts.push_back(h);
-        verticalCuts.insert(verticalCuts.begin(),0);
+        
         verticalCuts.push_back(w);
         
         for(int i=1;i<horizontalCuts.size();i++)
