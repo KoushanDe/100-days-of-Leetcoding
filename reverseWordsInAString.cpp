@@ -12,6 +12,15 @@ public:
             s.erase(s.end()-1);
         }
         
+        for(int i=1;i<s.size();i++)
+        {
+            if(s[i]==' '&&s[i-1]==' ')
+            {
+                s.erase(s.begin()+i);
+                i--;
+            }
+        }
+        
         int start=0;
         int end=s.find(" ");
         

@@ -1,14 +1,9 @@
-#include<bits/stdc++.h>
-#include<iostream>
-
-using namespace std;
-
 class Solution {
 public:
     struct compareFreq{
     bool operator()(pair<int,int>& p1, pair<int,int>& p2)
     {
-        return p1.second<p2.second;
+        return p1.second>p2.second; //ulto because priority queue acts ulto from vector
     }
     };
     
@@ -22,17 +17,24 @@ public:
         }
         
         priority_queue<pair<int,int>, vector<pair<int,int>>, compareFreq> pq;
+        //we can also do this question without using custom constructor
+        //we can push values to priority queue(minheap) like this {elem.second,elem.first}
         
         for(auto elem:freq)
-        {
-            pq.push(elem);
+        {   
+            if(pq.size()<k)
+                pq.push(elem);
+            else if(pq.size()==k&&elem.second>pq.top().second)
+            {
+                pq.pop();
+                pq.push(elem);
+            }
         }
         
-        while(k>0)
+        while(!pq.empty())
         {
             ans.push_back(pq.top().first);
             pq.pop();
-            k--;
         }
         return ans;
     }

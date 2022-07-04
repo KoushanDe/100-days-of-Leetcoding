@@ -38,3 +38,33 @@ vector<int> mergeKSortedArrays(vector<vector<int>>&kArrays, int k)
     
     return v1;
 }
+
+//MINHEAP APPROACH
+vector<int> mergeKSortedArrays(vector<vector<int>>&kArrays, int k)
+{    
+    priority_queue<pair<int,int> , vector<pair<int,int>> , greater<pair<int,int>>> pq;
+    
+    for(int i=0;i<k;i++)
+        pq.push({kArrays[i][0],i});
+    
+    vector<int> index(k,0);
+    vector<int> ans;
+    
+    while(!pq.empty())
+    {
+        int num = pq.top().first;
+        int arr = pq.top().second;
+        pq.pop();
+        
+        ans.push_back(num);
+        
+        if(index[arr]+1<kArrays[arr].size())
+        {
+            pq.push({kArrays[arr][index[arr]+1],arr});
+            index[arr]++;
+        }
+    }
+    
+    return ans;
+}
+
