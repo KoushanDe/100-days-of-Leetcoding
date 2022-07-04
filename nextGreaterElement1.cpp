@@ -19,17 +19,9 @@ public:
                 }
                 else
                 {
-                    while(!st.empty())
-                    {
-                        if(nums2[i]<st.top())
-                        {
-                            ans2[nums2[i]]=st.top();
-                            break;
-                        }
-                        st.pop();
-                    }
+                    st.pop();
                     continue;
-                }
+                }  
             }
 
             st.push(nums2[i--]);
