@@ -41,41 +41,34 @@ vector<int> maxMinWindow(vector<int> a, int n) {
     
     stack<int> st;
     
-    for(int i=0;i<n;)
+    //This is the best way to do nge nse etc..no continue; method is better.. period.
+    for(int i=0;i<n;i++)
     {
+        while(!st.empty()&&a[i]<=a[st.top()])
+                st.pop();
+  
         if(st.empty())
             lse.push_back(-1);
         else
-        {
-            if(a[i]<=a[st.top()])
-            {
-                st.pop();
-                continue;
-            }
-            else
-                lse.push_back(st.top());
-        }
-        st.push(i++);
+            lse.push_back(st.top());
+
+        st.push(i);
     }
     
     while(!st.empty())
         st.pop();
     
-    for(int i=n-1;i>=0;)
+    for(int i=n-1;i>=0;i--)
     {
+        while(!st.empty()&&a[i]<=a[st.top()])
+                st.pop();
+  
         if(st.empty())
             rse.push_back(n);
         else
-        {
-            if(a[i]<=a[st.top()])
-            {
-                st.pop();
-                continue;
-            }
-            else
-                rse.push_back(st.top());
-        }
-        st.push(i--);
+            rse.push_back(st.top());
+
+        st.push(i);
     }
     reverse(rse.begin(),rse.end());
     
