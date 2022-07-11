@@ -33,7 +33,7 @@ public:
                 ans = temp;
             }
             
-            if(i<s.size()-1)
+            if(i<s.size()-1&&s[i]==s[i+1])
             {
                 temp = palindromesub(s,i,i+1);
                 if(temp.size()>maxlen)
