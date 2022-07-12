@@ -32,3 +32,36 @@ public:
         return "";
     }
 };
+
+//Better Brute approach
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs) {
+        int index=0;
+        
+        while(true)
+        {   
+            int flag=0;
+            if(index>=strs[0].size()) break;
+            
+            char c = strs[0][index];
+            
+            for(int i=1;i<strs.size();i++)
+            {
+                if(index>=strs[i].size()||strs[i][index]!=c)
+                {
+                    flag=1;
+                    break;
+                }
+            }
+            
+            if(flag==0)
+                index++;
+            else
+                break;
+        }
+        
+        return strs[0].substr(0,index);
+        
+    }
+};
