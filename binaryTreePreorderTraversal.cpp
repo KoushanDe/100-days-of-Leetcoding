@@ -37,23 +37,20 @@ public:
         stack<TreeNode*> st;
         vector<int> preorder;
         
-        TreeNode* node = root;
+        TreeNode* node;
         
-        while(true)
+        while(!st.empty())
         {
-            if(node!=NULL)
-            {
-                preorder.push_back(node->val);
-                st.push(node);
-                node=node->left;
-            }
-            else{
-                if(st.empty()) break;
-                
-                node=st.top();
-                st.pop();
-                node=node->right;
-            }
+            node = st.top();
+            st.pop();
+
+            preorder.push_back(node->val);
+
+            if(node->right)
+            st.push(node->right);
+
+            if(node->left)
+            st.push(node->left);
         }
         
         return preorder;
