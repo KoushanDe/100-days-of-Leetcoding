@@ -34,7 +34,9 @@ int childrenSum(BinaryTreeNode<int>* root)
         right = childrenSum(root->right);
     }
     
-    return root->data=max(root->data,left+right);
+    if(root->left||root->right) root->data = left+right;
+    
+    return root->data;
 }
 void changeTree(BinaryTreeNode < int > * root) {
     if(root==NULL) return;
