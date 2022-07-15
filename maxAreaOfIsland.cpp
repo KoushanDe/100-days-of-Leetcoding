@@ -30,7 +30,7 @@ public:
         int m = grid.size();
         int n = grid[0].size();
         
-        vector<vector<int>> vis(m,vector<int>(n,0));
+        vector<vector<int>> vis(m,vector<int>(n,0)); //vis can be removed if we are allowed to make changes in given array ie, when a 1 is visited make it 0
         int maxarea = 0;
         
         for(int i=0;i<m;i++)
