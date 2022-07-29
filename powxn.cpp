@@ -27,3 +27,32 @@ public:
         return ans;
     }
 };
+
+//RECURSIVE
+class Solution {
+public:
+    double multiply(double x, long long n)
+    {
+        if(n==0) return 1;
+        if(n==1) return x;
+        
+        double mul = multiply(x,n/2);
+        mul = mul*mul;
+        
+        if(n&1)
+            mul = mul*x;
+        
+        return mul;
+    }
+        
+    double myPow(double x, int n) {
+        long long pn = abs(n);
+        
+        double ans = multiply(x,pn);
+        
+        if(n<0)
+            ans = 1/ans;
+        
+        return ans;
+    }
+};
