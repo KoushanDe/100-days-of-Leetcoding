@@ -2,12 +2,12 @@ class Solution {
 public:
     int minSetSize(vector<int>& arr) {
         unordered_map<int,int> freq;
-        
+        int n = arr.size();
+
         for(auto num:arr)
         {
             freq[num]++;
         }
-        int n = arr.size();
         
         priority_queue<int> pq;
         int setsize=0;
