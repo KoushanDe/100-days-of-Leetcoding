@@ -1,76 +1,66 @@
-class Solution {
-public:
-    bool isPossible(vector<int>& nums) {
-        map<int,int> freq;
-        int n = nums.size();
+//{ Driver Code Starts
+#include <iostream>
+using namespace std;
+
+
+// } Driver Code Ends
+class Solution{
+    public:
+    // Function to find equilibrium point in the array.
+    // a: input array
+    // n: size of array
+    int equilibriumPoint(long long a[], int n) {
+    
+        // Your code here
+        long long backsum=0;
+        for(int i=0;i<n;i++)
+        backsum+=a[i];
         
-        int low = nums[0];
-        int high = nums[n-1];
-        
-        for(auto &it:nums)
-            freq[it]++;
-        
-        int flag=0,count=0,maxm;
-        
-        while(true)
-        {   
-            count=0;
-            flag=0;
-            maxm=INT_MIN;
-            for(int i=low;i<=high;i++)
-            {   
-                if(freq[i]>0&&flag==0)
-                {
-                    if(freq[i]==1){
-                        flag=1;
-                    }
-                    else
-                    {   
-                        maxm = max(maxm,freq[i]);
-                        flag=2;
-                    }
-                    freq[i]--;
-                    count++;
-                }
-                else if(flag==1)
-                {
-                    if(freq[i]==0)
-                    {
-                        if(count<3)
-                            return false;
-                        else
-                            break;
-                    }
-                    else if(freq[i]>1)
-                    {
-                        maxm=max(maxm,freq[i]);
-                        flag=2;
-                    }
-                    
-                    freq[i]--;
-                    count++;
-                }
-                else if(flag==2)
-                {
-                    if(freq[i]<maxm)
-                    {
-                        if(count<3)
-                            return false;
-                        else
-                            break;
-                    }
-                    maxm=max(maxm,freq[i]);
-                    freq[i]--;
-                    count++;
-                }
+        long long frontsum=0;
+        for(int i=0;i<n;i++)
+        {
+            if(i!=0){
+                frontsum+=a[i-1];
             }
+            backsum-=a[i];
             
-            if(flag==0)
-                break;
-            if(count<3)
-                return false;
+            if(backsum==frontsum)
+            return i+1;
         }
         
-        return true;
+        return -1;
     }
+
 };
+
+//{ Driver Code Starts.
+
+
+int main() {
+
+    long long t;
+    
+    //taking testcases
+    cin >> t;
+
+    while (t--) {
+        long long n;
+        
+        //taking input n
+        cin >> n;
+        long long a[n];
+
+        //adding elements to the array
+        for (long long i = 0; i < n; i++) {
+            cin >> a[i];
+        }
+        
+        Solution ob;
+
+        //calling equilibriumPoint() function
+        cout << ob.equilibriumPoint(a, n) << endl;
+    }
+    return 0;
+}
+
+// } Driver Code Ends

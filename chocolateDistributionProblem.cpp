@@ -1,76 +1,48 @@
-class Solution {
-public:
-    bool isPossible(vector<int>& nums) {
-        map<int,int> freq;
-        int n = nums.size();
+//{ Driver Code Starts
+#include <bits/stdc++.h>
+using namespace std;
+
+// } Driver Code Ends
+class Solution{
+    public:
+    long long findMinDiff(vector<long long> a, long long n, long long m){
+    //code
+        sort(a.begin(),a.end());
+        long long minDiff=LONG_MAX;
         
-        int low = nums[0];
-        int high = nums[n-1];
+        int start=0,end=m-1;
         
-        for(auto &it:nums)
-            freq[it]++;
-        
-        int flag=0,count=0,maxm;
-        
-        while(true)
-        {   
-            count=0;
-            flag=0;
-            maxm=INT_MIN;
-            for(int i=low;i<=high;i++)
-            {   
-                if(freq[i]>0&&flag==0)
-                {
-                    if(freq[i]==1){
-                        flag=1;
-                    }
-                    else
-                    {   
-                        maxm = max(maxm,freq[i]);
-                        flag=2;
-                    }
-                    freq[i]--;
-                    count++;
-                }
-                else if(flag==1)
-                {
-                    if(freq[i]==0)
-                    {
-                        if(count<3)
-                            return false;
-                        else
-                            break;
-                    }
-                    else if(freq[i]>1)
-                    {
-                        maxm=max(maxm,freq[i]);
-                        flag=2;
-                    }
-                    
-                    freq[i]--;
-                    count++;
-                }
-                else if(flag==2)
-                {
-                    if(freq[i]<maxm)
-                    {
-                        if(count<3)
-                            return false;
-                        else
-                            break;
-                    }
-                    maxm=max(maxm,freq[i]);
-                    freq[i]--;
-                    count++;
-                }
-            }
-            
-            if(flag==0)
-                break;
-            if(count<3)
-                return false;
+        while(end<n)
+        {
+            minDiff=min(minDiff,a[end]-a[start]);
+            start++,end++;
         }
         
-        return true;
-    }
+        return minDiff;
+    }   
 };
+
+//{ Driver Code Starts.
+int main() {
+	long long t;
+	cin>>t;
+	while(t--)
+	{
+		long long n;
+		cin>>n;
+		vector<long long> a;
+		long long x;
+		for(long long i=0;i<n;i++)
+		{
+			cin>>x;
+			a.push_back(x);
+		}
+		
+		long long m;
+		cin>>m;
+		Solution ob;
+		cout<<ob.findMinDiff(a,n,m)<<endl;
+	}
+	return 0;
+}
+// } Driver Code Ends

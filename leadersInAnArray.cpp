@@ -1,76 +1,66 @@
-class Solution {
-public:
-    bool isPossible(vector<int>& nums) {
-        map<int,int> freq;
-        int n = nums.size();
+//{ Driver Code Starts
+// C++ program to remove recurring digits from
+// a given number
+#include <bits/stdc++.h>
+using namespace std;
+
+
+// } Driver Code Ends
+    
+
+class Solution{
+    //Function to find the leaders in the array.
+    public:
+    vector<int> leaders(int a[], int n){
+        // Code here
+        vector<int> ans;
+        int maxm=a[n-1];
+        ans.push_back(a[n-1]);
         
-        int low = nums[0];
-        int high = nums[n-1];
-        
-        for(auto &it:nums)
-            freq[it]++;
-        
-        int flag=0,count=0,maxm;
-        
-        while(true)
-        {   
-            count=0;
-            flag=0;
-            maxm=INT_MIN;
-            for(int i=low;i<=high;i++)
-            {   
-                if(freq[i]>0&&flag==0)
-                {
-                    if(freq[i]==1){
-                        flag=1;
-                    }
-                    else
-                    {   
-                        maxm = max(maxm,freq[i]);
-                        flag=2;
-                    }
-                    freq[i]--;
-                    count++;
-                }
-                else if(flag==1)
-                {
-                    if(freq[i]==0)
-                    {
-                        if(count<3)
-                            return false;
-                        else
-                            break;
-                    }
-                    else if(freq[i]>1)
-                    {
-                        maxm=max(maxm,freq[i]);
-                        flag=2;
-                    }
-                    
-                    freq[i]--;
-                    count++;
-                }
-                else if(flag==2)
-                {
-                    if(freq[i]<maxm)
-                    {
-                        if(count<3)
-                            return false;
-                        else
-                            break;
-                    }
-                    maxm=max(maxm,freq[i]);
-                    freq[i]--;
-                    count++;
-                }
+        for(int i=n-2;i>=0;i--)
+        {
+            if(a[i]>=maxm)
+            {
+                maxm=a[i];
+                ans.push_back(a[i]);
             }
-            
-            if(flag==0)
-                break;
-            if(count<3)
-                return false;
         }
         
-        return true;
+        reverse(ans.begin(),ans.end());
+        
+        return ans;
     }
 };
+
+//{ Driver Code Starts.
+
+int main()
+{
+   long long t;
+   cin >> t;//testcases
+   while (t--)
+   {
+       long long n;
+       cin >> n;//total size of array
+        
+        int a[n];
+        
+        //inserting elements in the array
+        for(long long i =0;i<n;i++){
+            cin >> a[i];
+        }
+        Solution obj;
+        //calling leaders() function
+        vector<int> v = obj.leaders(a, n);
+        
+        //printing elements of the vector
+        for(auto it = v.begin();it!=v.end();it++){
+            cout << *it << " ";
+        }
+        
+        cout << endl;
+
+   }
+}
+
+// } Driver Code Ends
